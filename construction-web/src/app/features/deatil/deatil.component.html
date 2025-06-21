@@ -1,0 +1,44 @@
+<h2 class="mb-4">Edit Construction</h2>
+<button class="btn btn-secondary mb-3" (click)="goBack()">
+  ← Back to Summary
+</button>
+<div class="row">
+  <div class="col-md-3">
+    <div class="list-group">
+      <button
+        type="button"
+        class="list-group-item list-group-item-action"
+        *ngFor="let obs of fullData; let i = index"
+        [class.active]="i === selectedIndex"
+        (click)="selectObservation(i)">
+        {{ obs.samplingTime }}
+      </button>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" class="card p-4 shadow-sm">
+      <div class="mb-3">
+        <label class="form-label">Project Name</label>
+        <input type="text" class="form-control" formControlName="projectName" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Construction Count</label>
+        <input type="number" class="form-control" formControlName="constructionCount" />
+      </div>
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" formControlName="isCompleted" />
+        <label class="form-check-label">Is Construction Completed</label>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Length of the road (KM)</label>
+        <input type="number" step="0.1" class="form-control" formControlName="roadLength" />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+</div>
