@@ -1,0 +1,24 @@
+<h2 class="mb-4">Construction Summary</h2>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Sampling Time</th>
+        <th *ngFor="let header of dataSource[0]?.properties" scope="col">
+          {{ header.label }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataSource; let i = index" 
+          (click)="goToDetail(i)" 
+          style="cursor: pointer;">
+        <td>{{ data.samplingTime }}</td>
+        <td *ngFor="let prop of data.properties">
+          {{ prop.value }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
